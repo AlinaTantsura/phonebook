@@ -1,11 +1,11 @@
 import Button from "components/Form/Button.styled";
 import Item from "./Item.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFiltredContacts } from "reduxToolkit/selectors";
+import { selectFiltredContacts } from "reduxToolkit/contacts/selectors";
 import { Notify } from "notiflix";
-import { deleteContacts } from "reduxToolkit/operations";
+import { deleteContacts } from "reduxToolkit/contacts/operations";
 
-const Contacts = () => {
+const ContactsList = () => {
     const dispatch = useDispatch()
     const filtredContacts = useSelector(selectFiltredContacts);
 
@@ -24,4 +24,4 @@ const Contacts = () => {
     )
 }
 
-export default Contacts;
+export default ContactsList;

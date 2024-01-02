@@ -2,9 +2,9 @@ import FormStyled from "./Form.styled";
 import Button from "./Button.styled";
 import Input from "./Input.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { selectContacts } from "reduxToolkit/selectors";
+import { selectContacts } from "reduxToolkit/contacts/selectors";
 import { Notify } from "notiflix";
-import { addContactBase } from "reduxToolkit/operations";
+import { addContactBase } from "reduxToolkit/contacts/operations";
 
 const Form = () => {
     const dispatch = useDispatch();

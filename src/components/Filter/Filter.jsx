@@ -1,7 +1,7 @@
 import Input from "components/Form/Input.styled";
 import { useDispatch, useSelector } from "react-redux";
-import { addFilter } from "reduxToolkit/filterSlice";
-import { selectFilterWord } from "reduxToolkit/selectors";
+import { addFilter } from "reduxToolkit/contacts/filterSlice";
+import { selectFilterWord } from "reduxToolkit/contacts/selectors";
 
 const Filter = () => {
     const filter = useSelector(selectFilterWord);
