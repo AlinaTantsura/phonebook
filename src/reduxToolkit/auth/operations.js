@@ -7,15 +7,30 @@ const setAuthToken = token => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-export const createUser = createAsyncThunk(
+export const register = createAsyncThunk(
     "auth/register",
     async (credentials, thunkAPI) => {
         try {
             const resp = await axios.post('/users/signup', credentials);
-            setAuthToken(resp.data.token);
+            // setAuthToken(resp.data.token);
             return resp.data;
         } catch (error) {
-            thunkAPI.rejectWithValue(error.message);
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
+
+export const logIn = createAsyncThunk(
+    "auth/logIn",
+    async (credentials, thunkAPI) => {
+        
+        try {
+            const resp = await axios.post('/users/login', credentials);
+            setAuthToken(resp.data.token);
+            return resp.data;
+        }
+        catch (error) {
+            return thunkAPI.rejectWithValue(error.message)
         }
     }
 )
