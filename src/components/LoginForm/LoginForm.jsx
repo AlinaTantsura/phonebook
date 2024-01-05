@@ -5,16 +5,16 @@ const LoginForm = () => {
    const dispatch = useDispatch();
     const handleLogin = (event) => {
         event.preventDefault();
-        const form = event.target;
-        dispatch(logIn({ name: form.elements.name.value, password: form.elements.password.value }));
+        const form = event.currentTarget;
+        dispatch(logIn({ email: form.elements.email.value, password: form.elements.password.value }));
         form.reset();
         }
 
     return (
         <form onSubmit={handleLogin}>
             <label>
-                Username
-                <input type='text' name='name' />
+                Email
+                <input type='text' name='email' />
             </label>
             <label>
                 Password
