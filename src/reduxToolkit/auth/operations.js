@@ -46,7 +46,24 @@ export const logOut = createAsyncThunk(
             clearAuthToken();
         }
         catch (error) {
-            return thunkAPI.rejectWithValue(error.message); 
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
+
+export const refreshUser = createAsyncThunk(
+    "auth/refreshUser",
+    async (_, thunkAPI) => {
+        const token = thunkAPI.getState().auth.token;
+        if (!token) return thunkAPI.rejectWithValue('Something wrong');
+        // console.log(foo)
+         setAuthToken(token);
+        try {
+            const resp = await axios.get('/users/current')
+            return resp.data;
+         }
+        catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
         }
     }
 )
