@@ -1,4 +1,6 @@
-import Input from "components/Form/Input.styled";
+import { Box, Text } from "@chakra-ui/react";
+// import Input from "components/Form/Input.styled";
+import { Input } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFilter } from "reduxToolkit/contacts/filterSlice";
 import { selectFilterWord } from "reduxToolkit/contacts/selectors";
@@ -11,10 +13,10 @@ const Filter = () => {
     }
 
     return (
-        <div>
-        <p>Find contacts by name</p>
-            <Input type="text" name="filter" value={filter} onChange={handleChange} />       
-        </div>
+        <Box pl={6}>
+        <Text>Find contacts by name</Text>
+            <Input type="text" name="filter" value={filter} onChange={handleChange} marginBottom={3} w={250}/>       
+        </Box>
     )
 }
 

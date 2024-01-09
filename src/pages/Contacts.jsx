@@ -1,22 +1,23 @@
+import { Box, Heading } from "@chakra-ui/react";
 import ContactsList from "components/ContactsList/ContactsList";
 import Filter from "components/Filter/Filter";
 import Form from "components/Form/Form";
 
 const Contacts= () => {
     return (
-            <div>
-                <h1>Phonebook</h1>
+        <Box as='div' padding={6}>
+                <Heading>Phonebook</Heading>
                 <Form />
             
             {/* {(isLoad && !error) && <Loader />}
            {     (contacts.length !== 0) && ( */}
                 <>
-                    <h2>Contacts</h2>
+                    <Heading>Contacts</Heading>
                     <Filter />
                     <ContactsList />
                 </>
             {/* )} */}
-    </div>
+        </Box>
     )
 };
 export default Contacts;

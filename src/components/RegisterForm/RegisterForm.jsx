@@ -1,3 +1,4 @@
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
 import { register } from "reduxToolkit/auth/operations";
 
@@ -11,28 +12,22 @@ const RegisterForm = () => {
             email: form.elements.email.value,
             password: form.elements.password.value,
         }));
-//         dispatch(register({
-//   "name": "Adrian Cross",
-//   "email": "across@mail.com",
-//   "password": "examplepwd12345"
-// }));
         form.reset();
     }
     return (
         <form onSubmit={handleRegister}>
-            <label>
-                Username
-                <input type='text' name='name' />
-            </label>
-            <label>
-                E-mail
-                <input type='email' name='email' />
-            </label>
-            <label>
-                Password
-                <input type='password' name='password' />
-            </label>
-            <button type='submit'>Register</button>
+            <FormControl margin={6}>
+                <FormLabel htmlFor='name' >Username</FormLabel>
+                    <Input type='text' name='name' id='name' marginBottom={3} w={250} />
+            
+                <FormLabel htmlFor='email'>E-mail </FormLabel>
+                    <Input type='email' name='email' id='email' marginBottom={3} w={250} />
+           
+                <FormLabel htmlFor='password'>Password</FormLabel>
+                    <Input type='password' name='password' id='password' marginBottom={3} w={250} />
+                <br/>
+                <Button colorScheme='teal' variant='outline' type='submit'>Register</Button>
+            </FormControl>
         </form>
     )
 };

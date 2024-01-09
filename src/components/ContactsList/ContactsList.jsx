@@ -1,5 +1,5 @@
-import Button from "components/Form/Button.styled";
-import Item from "./Item.styled";
+// import Button from "components/Form/Button.styled";
+import { Button, ListItem, UnorderedList, flexbox } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFiltredContacts } from "reduxToolkit/contacts/selectors";
 import { Notify } from "notiflix";
@@ -10,17 +10,17 @@ const ContactsList = () => {
     const filtredContacts = useSelector(selectFiltredContacts);
 
     return (
-            <ul>
+            <UnorderedList styleType="none" ml={6}>
             {filtredContacts.map(({name, number, id}) => {
                 const handleClick = () => {
                     Notify.success(`The contact '${name}' is successfully deleted`);
                     return dispatch(deleteContacts(id))
                 }
-                return <Item key={id}>{name}: {number}
-                    <Button type='button'
-                        onClick={handleClick}>Delete</Button> </Item>
+                return <ListItem key={id} fontSize={18} mb={3}>{name}: {number}
+                    <Button colorScheme='teal' variant='outline' ml={3} type='button'
+                        onClick={handleClick}>Delete</Button> </ListItem>
             })}
-            </ul>
+            </UnorderedList>
     )
 }
 

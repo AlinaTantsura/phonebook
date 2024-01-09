@@ -1,6 +1,4 @@
-import FormStyled from "./Form.styled";
-import Button from "./Button.styled";
-import Input from "./Input.styled";
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectContacts } from "reduxToolkit/contacts/selectors";
 import { Notify } from "notiflix";
@@ -28,27 +26,31 @@ const Form = () => {
     }
 
     return (
-        <FormStyled onSubmit={handleSubmit}>
-        <label>
-            Name
+        <form onSubmit={handleSubmit}>
+            <FormControl outline='solid 1px lightgrey' borderRadius={10} m={6} p={6} w={500}>
+                <FormLabel htmlFor='name' >Name</FormLabel>
                     <Input
                         type="text"
                         name="name"
                         required
                         pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                        title="Name must contain only letters" />
-        </label>
-        <label>
-            Number
+                    title="Name must contain only letters"
+                 marginBottom={3} w={250}/>
+        
+               
+                    <FormLabel htmlFor='number' >Number</FormLabel>
+            
                     <Input
                         type="tel"
                         name="number"
                         required
                         pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
-                        title="'123-45-67'   Number must contain only numbers"/>
-        </label>
-        <Button type="submit">Add contact</Button>
-    </FormStyled>
+                    title="'123-45-67'   Number must contain only numbers"
+                    marginBottom={3} w={250} />
+                <br/>
+        <Button colorScheme='teal' variant='outline' type="submit">Add contact</Button>
+            </FormControl>
+            </form>
     )
 
 }
