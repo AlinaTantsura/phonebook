@@ -14,7 +14,15 @@ const UserMenu = () => {
     return (
         <Flex gap={6} align='center'>
             <p>Hello, {name}</p>
-            <Button rightIcon={<ArrowForwardIcon />} colorScheme='teal' variant='outline' type='button' onClick={handleClick}>Log out</Button>
+            <Button
+                rightIcon={<ArrowForwardIcon />}
+                colorScheme='teal'
+                variant='outline'
+                type='button'
+                onClick={handleClick}
+                _hover={{
+                        backgroundColor: 'teal',
+                        color: 'white'}}>Log out</Button>
         </Flex>
     );
 };

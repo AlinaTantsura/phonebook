@@ -6,6 +6,7 @@ import { refreshUser } from "reduxToolkit/auth/operations"
 import { selectIsRefresh } from "reduxToolkit/auth/selectors"
 import RedirectRoute from "./RedirectRoute"
 import PrivateRoute from "./PrivateRoute"
+import { fetchContacts } from "reduxToolkit/contacts/operations"
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -17,7 +18,8 @@ export const App = () => {
     const isRefresh = useSelector(selectIsRefresh);
 
     useEffect(() => {
-        dispatch(refreshUser())
+        dispatch(refreshUser());
+        dispatch(fetchContacts());
     }, [dispatch]);
 
     return !isRefresh && (

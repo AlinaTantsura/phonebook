@@ -4,7 +4,7 @@ import { selectContacts } from "reduxToolkit/contacts/selectors";
 import { Notify } from "notiflix";
 import { addContactBase } from "reduxToolkit/contacts/operations";
 
-const Form = () => {
+const ContactsForm = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(selectContacts);
 
@@ -35,7 +35,8 @@ const Form = () => {
                         required
                         pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                     title="Name must contain only letters"
-                 marginBottom={3} w={250}/>
+                    marginBottom={3} w={250}
+                _focus={{border:'solid 1px teal',boxShadow:'0 0 0 1px teal'}}/>
         
                
                     <FormLabel htmlFor='number' >Number</FormLabel>
@@ -46,13 +47,19 @@ const Form = () => {
                         required
                         pattern="\+?\d{1,4}?[ .\-\s]?\(?\d{1,3}?\)?[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,4}[ .\-\s]?\d{1,9}"
                     title="'123-45-67'   Number must contain only numbers"
-                    marginBottom={3} w={250} />
+                    marginBottom={3} w={250}
+                _focus={{border:'solid 1px teal',boxShadow:'0 0 0 1px teal'}}/>
                 <br/>
-        <Button colorScheme='teal' variant='outline' type="submit">Add contact</Button>
+                <Button colorScheme='teal'
+                    variant='outline'
+                    type="submit"
+                    _hover={{
+                        backgroundColor: 'teal',
+                        color: 'white'}}>Add contact</Button>
             </FormControl>
             </form>
     )
 
 }
 
-export default Form;
+export default ContactsForm;
