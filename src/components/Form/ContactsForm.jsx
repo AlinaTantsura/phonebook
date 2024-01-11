@@ -34,9 +34,9 @@ const ContactsForm = () => {
                         name="name"
                         required
                         pattern="^[a-zA-Zа-яА-Я]+(([' \-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                    title="Name must contain only letters"
-                    marginBottom={3} w={250}
-                _focus={{border:'solid 1px teal',boxShadow:'0 0 0 1px teal'}}/>
+                        title="Name must contain only letters"
+                        marginBottom={3} w={250}
+                        _focus={{border:'solid 1px teal',boxShadow:'0 0 0 1px teal'}}/>
         
                
                     <FormLabel htmlFor='number' >Number</FormLabel>

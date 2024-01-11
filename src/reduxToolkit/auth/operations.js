@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const setAuthToken = token => {
@@ -33,6 +34,7 @@ export const logIn = createAsyncThunk(
             return resp.data;
         }
         catch (error) {
+            
             return thunkAPI.rejectWithValue(error.message)
         }
     }
@@ -56,7 +58,6 @@ export const refreshUser = createAsyncThunk(
     async (_, thunkAPI) => {
         const token = thunkAPI.getState().auth.token;
         if (!token) return thunkAPI.rejectWithValue('Something wrong');
-        // console.log(foo)
          setAuthToken(token);
         try {
             const resp = await axios.get('/users/current')
