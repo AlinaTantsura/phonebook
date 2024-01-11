@@ -1,6 +1,6 @@
 import { Box, Flex, Spacer } from "@chakra-ui/react";
 import Navigation from "components/Navigation";
-import UserMenu from "components/UserMenu/UserMenu";
+import UserMenu from "components/UserMenu";
 import { useSelector } from "react-redux";
 import { selectIsLogIn } from "reduxToolkit/auth/selectors";
 

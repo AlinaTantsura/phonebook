@@ -1,12 +1,12 @@
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Button, FormControl, FormLabel, Input, useToast } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectContacts } from "reduxToolkit/contacts/selectors";
-import { Notify } from "notiflix";
 import { addContactBase } from "reduxToolkit/contacts/operations";
 
 const ContactsForm = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(selectContacts);
+    const toast = useToast();
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -15,12 +15,21 @@ const ContactsForm = () => {
         const number = form.elements.number.value;
         const obj = { name, number };
         if (contacts.find(contact => contact.name === name)) {
-            Notify.warning(`${name} is already in your contacts`)
-            
+            toast({
+                position: 'top-right',
+                title: `${name} is already in your contacts`,
+                status: 'warning',
+                duration: 4000,
+            })
         }
         else {
             dispatch(addContactBase(obj));
-            Notify.success(`New contact '${name}' is successfully created`)
+            toast({
+                position: 'top-right',
+                title: `New contact '${name}' is successfully created`,
+                status: 'success',
+                duration: 4000,
+            })
         }
         form.reset();
     }

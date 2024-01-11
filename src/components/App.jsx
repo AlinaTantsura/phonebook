@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom"
-import Layout from "./Layout/Layout"
+import Layout from "./Layout"
 import { lazy, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { refreshUser } from "reduxToolkit/auth/operations"
@@ -26,11 +26,8 @@ export const App = () => {
         <Routes>
             <Route path='/' element={<Layout />} >
                 <Route index element={<HomePage />} />
-                {/* <Route path='/register' element={<RegisterPage />} /> */}
                 <Route path='/register' element={<RedirectRoute component={RegisterPage} redirectTo='/contacts'/>} />
-                {/* <Route path='/login' element={<LoginPage />} /> */}
                 <Route path='/login' element={<RedirectRoute component={LoginPage} redirectTo="/contacts" />} />
-                {/* <Route path='/contacts' element={<ContactsPage />} /> */}
                 <Route path='/contacts' element={<PrivateRoute component={ContactsPage} redirectTo="/login" />} />
                 <Route path='*' element={<HomePage />} />
             </Route>

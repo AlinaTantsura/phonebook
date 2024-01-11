@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { createStandaloneToast } from '@chakra-ui/react'
+const { toast } = createStandaloneToast()
 
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -20,6 +22,13 @@ export const register = createAsyncThunk(
             setAuthToken(resp.data.token);
             return resp.data;
         } catch (error) {
+            toast({
+                position: 'top-right',
+                title: 'E-mail is already used.',
+                description: "Please, log in or use another e-mail.",
+                status: 'error',
+                duration: 4000,
+            })
             return thunkAPI.rejectWithValue(error.message);
         }
     }
@@ -34,7 +43,13 @@ export const logIn = createAsyncThunk(
             return resp.data;
         }
         catch (error) {
-            
+            toast({
+                position: 'top-right',
+                title: 'Wrong e-mail or password.',
+                description: "Maybe you are not registered)",
+                status: 'error',
+                duration: 4000,
+            })
             return thunkAPI.rejectWithValue(error.message)
         }
     }

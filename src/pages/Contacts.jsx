@@ -1,7 +1,7 @@
 import { Box, Flex, Heading, Spinner} from "@chakra-ui/react";
-import ContactsList from "components/ContactsList/ContactsList";
-import Filter from "components/Filter/Filter";
-import ContactsForm from "components/Form/ContactsForm";
+import ContactsList from "components/ContactsList";
+import Filter from "components/Filter";
+import ContactsForm from "components/ContactsForm";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLogIn } from "reduxToolkit/auth/selectors";

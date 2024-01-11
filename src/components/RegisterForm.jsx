@@ -1,12 +1,9 @@
-import { Button, FormControl, FormLabel, Input, useToast } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
+import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { useDispatch} from "react-redux";
 import { register } from "reduxToolkit/auth/operations";
-import { selectToken } from "reduxToolkit/auth/selectors";
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
-    const token = useSelector(selectToken);
-    const toast = useToast();
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -16,15 +13,6 @@ const RegisterForm = () => {
             email: form.elements.email.value,
             password: form.elements.password.value,
         }));
-        if (!token) {
-            toast({
-                position: 'top-right',
-                title: 'E-mail is already used.',
-                description: "Please, log in or use another e-mail.",
-                status: 'error',
-                duration: 4000,
-            })
-        }
         form.reset();
     }
     return (

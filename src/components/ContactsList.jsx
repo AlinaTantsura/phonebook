@@ -1,18 +1,23 @@
-import { Button, ListItem, Text, UnorderedList } from "@chakra-ui/react";
+import { Button, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFiltredContacts } from "reduxToolkit/contacts/selectors";
-import { Notify } from "notiflix";
 import { deleteContacts } from "reduxToolkit/contacts/operations";
 
 const ContactsList = () => {
     const dispatch = useDispatch()
     const filtredContacts = useSelector(selectFiltredContacts);
+    const toast = useToast();
 
     return (
             <UnorderedList styleType="none" ml={6}>
             {filtredContacts.map(({name, number, id}) => {
                 const handleClick = () => {
-                    Notify.success(`The contact '${name}' is successfully deleted`);
+                    toast({
+                        position: 'top-right',
+                        title: `The contact '${name}' is successfully deleted`,
+                        status: 'success',
+                        duration: 4000,
+                    })
                     return dispatch(deleteContacts(id))
                 }
                 return <ListItem display='flex'
