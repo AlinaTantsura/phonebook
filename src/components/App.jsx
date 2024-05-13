@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -24,7 +24,7 @@ export const App = () => {
 
   return (
     !isRefresh && (
-      <HashRouter basename="/phonebook">
+      <BrowserRouter basename="/phonebook">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
@@ -52,7 +52,7 @@ export const App = () => {
             <Route path="*" element={<HomePage />} />
           </Route>
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     )
   );
 };
