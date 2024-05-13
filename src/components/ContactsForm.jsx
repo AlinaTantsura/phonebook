@@ -45,9 +45,9 @@ const ContactsForm = () => {
       <FormControl
         outline="solid 1px lightgrey"
         borderRadius={10}
-        m={6}
+        m="24px 0"
         p={6}
-        w={500}
+        minW={{ base: '240px', md: '400px', lg: '560px' }}
       >
         <FormLabel htmlFor="name">Name</FormLabel>
         <Input

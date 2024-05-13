@@ -19,6 +19,12 @@ export const register = createAsyncThunk(
     "auth/register",
     async (credentials, thunkAPI) => {
         try {
+            toast({
+                position: 'top-right',
+                description: "Register in process. Thanks for your waiting)))",
+                status: 'info',
+                duration: 4000,
+            })
             const resp = await axios.post('/users/register', credentials);
             setAuthToken(resp.data.token);
             return resp.data;
@@ -40,6 +46,12 @@ export const logIn = createAsyncThunk(
     "auth/logIn",
     async (credentials, thunkAPI) => {
         try {
+            toast({
+                position: 'top-right',
+                description: "Login in process. Thanks for your waiting)))",
+                status: 'info',
+                duration: 4000,
+            })
             const resp = await axios.post('/users/login', credentials);
             setAuthToken(resp.data.token);
             return resp.data;
