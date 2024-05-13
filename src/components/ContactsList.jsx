@@ -10,7 +10,7 @@ const ContactsList = () => {
 
     return (
             <UnorderedList styleType="none" ml={6}>
-            {filtredContacts.map(({name, number, id}) => {
+            {filtredContacts.map(({name, phone:number, _id:id}) => {
                 const handleClick = () => {
                     toast({
                         position: 'top-right',
