@@ -1,7 +1,7 @@
 import { ArrowForwardIcon } from '@chakra-ui/icons';
 import { Avatar, Button, Flex, Text } from '@chakra-ui/react';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOut, verify} from 'reduxToolkit/auth/operations';
+import { logOut, verifyFunc } from 'reduxToolkit/auth/operations';
 import { selectUser } from 'reduxToolkit/auth/selectors';
 
 const UserMenu = () => {
@@ -13,12 +13,12 @@ const UserMenu = () => {
   };
 
   const handleClickVerify = () => {
-    return dispatch(verify({ email: email }));
+    return dispatch(verifyFunc({ email: email }));
   };
   return (
     <Flex content="center" direction="column" align="end">
-          <Flex gap={5} align="center">
-              <Avatar name={name} src={avatarURL} />
+      <Flex gap={5} align="center">
+        <Avatar name={name} src={avatarURL} />
         <p>Hello, {name}</p>
         <Button
           rightIcon={<ArrowForwardIcon />}

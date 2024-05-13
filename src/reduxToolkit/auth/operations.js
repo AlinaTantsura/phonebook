@@ -4,7 +4,7 @@ import { createStandaloneToast } from '@chakra-ui/react'
 const { toast } = createStandaloneToast()
 
 
-axios.defaults.baseURL = 'https://contactslistbackend-huoj.onrender.com';
+axios.defaults.baseURL = 'https://contactslistbackend-huoj.onrender.com/api';
 // axios.defaults.baseURL = 'http://localhost:3001/api';
 
 const setAuthToken = token => {
@@ -57,7 +57,7 @@ export const logIn = createAsyncThunk(
     }
 );
 
-export const verify = createAsyncThunk(
+export const verifyFunc = createAsyncThunk(
     "auth/verify",
     async (credentials, thunkAPI) => {
         try {
