@@ -33,9 +33,21 @@ export const deleteContacts = createAsyncThunk(
     async (contactId, thunkAPI) => {
         try {
             const resp = await axios.delete(`/contacts/${contactId}`);
-            return resp.data;
+            return resp
         }
         catch (error) {
+            return thunkAPI.rejectWithValue(error.message)
+        }
+    }
+)
+
+export const handleFavorite = createAsyncThunk(
+    "contacts/handleFavorite",
+    async ({contactId, favorite}, thunkAPI) => {
+        try {
+            const resp = await axios.patch(`/contacts/${contactId}/favorite`, { "favorite": favorite });
+            return resp.data;
+        } catch (error) {
             return thunkAPI.rejectWithValue(error.message)
         }
     }

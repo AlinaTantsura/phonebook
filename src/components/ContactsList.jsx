@@ -1,43 +1,36 @@
-import { Button, ListItem, Text, UnorderedList, useToast } from "@chakra-ui/react";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFiltredContacts } from "reduxToolkit/contacts/selectors";
-import { deleteContacts } from "reduxToolkit/contacts/operations";
+import { UnorderedList, useToast } from '@chakra-ui/react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFiltredContacts } from 'reduxToolkit/contacts/selectors';
+import ContactsItem from './ContactsItem';
+import { deleteContacts } from 'reduxToolkit/contacts/operations';
 
 const ContactsList = () => {
-    const dispatch = useDispatch()
-    const filtredContacts = useSelector(selectFiltredContacts);
-    const toast = useToast();
+  const filtredContacts = useSelector(selectFiltredContacts);
+  const toast = useToast();
+  const dispatch = useDispatch();
 
-    return (
-            <UnorderedList styleType="none" ml={6}>
-            {filtredContacts.map(({name, phone:number, _id:id}) => {
-                const handleClick = () => {
-                    toast({
-                        position: 'top-right',
-                        title: `The contact '${name}' is successfully deleted`,
-                        status: 'success',
-                        duration: 4000,
-                    })
-                    return dispatch(deleteContacts(id))
-                }
-                return <ListItem display='flex'
-                    alignItems='center'
-                    key={id}
-                    fontSize={18}
-                    mb={3}>
-                    <Text>{name}: {number}</Text>
-                    <Button
-                        colorScheme='teal'
-                        variant='outline'
-                        ml={3}
-                        type='button'
-                        _hover={{
-                            backgroundColor: 'teal',
-                            color: 'white'}}
-                        onClick={handleClick}>Delete</Button> </ListItem>
-            })}
-            </UnorderedList>
-    )
-}
+  return (
+    <UnorderedList styleType="none" margin={0}>
+      {filtredContacts.map(contact => {
+        const handleClick = () => {
+          toast({
+            position: 'top-right',
+            title: `The contact '${contact.name}' is successfully deleted`,
+            status: 'success',
+            duration: 4000,
+          });
+          return dispatch(deleteContacts(contact.id));
+        };
+        return (
+          <ContactsItem
+            key={contact.id}
+            contactsInfo={contact}
+            handleClick={handleClick}
+          />
+        );
+      })}
+    </UnorderedList>
+  );
+};
 
 export default ContactsList;

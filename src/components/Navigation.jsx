@@ -15,7 +15,7 @@ const Navigation = () => {
     }
 
     return (<nav>
-        <Flex gap={6} direction={{base: 'column', md: 'row' }}>
+        <Flex gap={6} direction={{base: 'column', sm: 'row' }}>
             <ChakraLink as={ReactRouterLink} to='/' _activeLink={activeStyles}>Home</ChakraLink>
             {!isLogIn ? (
                 <>
