@@ -29,7 +29,8 @@ contacts.
 
 ## Links
 
-- [LivePage](https://alinatantsura.github.io/phonebook/)
+- [LivePage](https://alinatantsura.github.io/phonebook/)(The first openning
+  might takes some time. Please wait. Thanks for you patience)
 - Repository [Frontend](https://github.com/AlinaTantsura/phonebook)
 - Repository [Backend](https://github.com/AlinaTantsura/contactsListBackend)
 
