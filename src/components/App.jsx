@@ -7,6 +7,7 @@ import { selectIsRefresh } from 'reduxToolkit/auth/selectors';
 import RedirectRoute from './RedirectRoute';
 import PrivateRoute from './PrivateRoute';
 import { fetchContacts } from 'reduxToolkit/contacts/operations';
+import { Box } from '@chakra-ui/react';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -23,7 +24,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    !isRefresh && (
+    !isRefresh ? (
       <BrowserRouter basename="/phonebook">
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -53,6 +54,6 @@ export const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
-    )
+    ) : (<Box textAlign="center"><h2> Server request in progress... It might takes a couple of minutes. Thanks for your patience.</h2></Box>)
   );
 };
